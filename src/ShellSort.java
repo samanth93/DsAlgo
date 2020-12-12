@@ -2,28 +2,18 @@
 public class ShellSort {
 	public static void main(String[] args) {
 		int[] arr = {20, 35, -15, 7, 55, 1, -22};
-		int gap = arr.length/2;
-		while(gap>1) {
-			for(int firstUnsortedIndex = gap;firstUnsortedIndex<arr.length;firstUnsortedIndex++) {
-				int newElement = arr[firstUnsortedIndex];
-				int i;
-				for(i=firstUnsortedIndex;i>0 && arr[i-1]>newElement;i++) {
-					arr[i] = arr[i-1];
+		for(int gap=arr.length/2;gap>0;gap=gap/2) {
+			for(int i=gap;i<arr.length;i++) {
+				int newElement = arr[i];
+				int j;
+				for(j=i;j>=gap && arr[j-gap]>newElement;j-=gap) {
+					arr[j] = arr[j-gap];
 				}
-				arr[i]=newElement;
-				gap=gap/2;
+				arr[j]=newElement;
 			}
 		}
-		for(int firstUnsortedIndex = 1;firstUnsortedIndex<arr.length;firstUnsortedIndex++) {
-			int newElement = arr[firstUnsortedIndex];
-			int i;
-			for(i=firstUnsortedIndex;i>0 && arr[i-1]>newElement;i++) {
-				arr[i] = arr[i-1];
-			}
-			arr[i]=newElement;
-		}
-		for(int i=0;i<arr.length;i++) {
-			System.out.print(arr[i]);
+		for(int l=0;l<arr.length;l++) {
+			System.out.print("\t"+arr[l]);
 		}
 	}
 }

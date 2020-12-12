@@ -2,16 +2,16 @@
 public class InsertionSort {
 	public static void main(String[] args) {
 		int[] arr = {20, 35, -15, 7, 55, 1, -22};
-		for(int firstUnsortedIndex = 1;firstUnsortedIndex<arr.length;firstUnsortedIndex++) {
-			int newElement = arr[firstUnsortedIndex];
-			int insertionPoint;
-			for(insertionPoint =firstUnsortedIndex;insertionPoint>0 && arr[insertionPoint-1]>newElement;insertionPoint--) {
-				arr[insertionPoint] = arr[insertionPoint-1];
+		for(int i=1;i<arr.length;i++) {
+			int newElement = arr[i];
+			int j;
+			for(j=i;j>0&&arr[j-1]>newElement;j--) {
+				arr[j]=arr[j-1];
 			}
-			arr[insertionPoint] = newElement;
+			arr[j]=newElement;
 		}
-		for(int i=0;i<arr.length;i++) {
-			System.out.print(arr[i]);
+		for(int l=0;l<arr.length;l++) {
+			System.out.print("\t"+arr[l]);
 		}
 	}
 }
