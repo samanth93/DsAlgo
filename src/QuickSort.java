@@ -6,44 +6,57 @@ public class QuickSort {
 		for(int i=0;i<arr.length;i++) {
 			System.out.println(arr[i]);
 		}
-		
 	}
-	public static void quickSort(int[] input, int start, int end) {
-//		this means we are dealing with one element array, that means we don't have to do anything
-//		just return, and the end index will be one greater
-		
+
+	private static void quickSort(int[] arr, int start, int end) {
 		if(end-start<2) {
 			return;
 		}
-		
-//		it we return the position of the pivot and at that position the left will be smaller and 
-//		right will be larger
-		int pivotIndex = partition(input, start, end);
-		quickSort(input, start, pivotIndex);
-		quickSort(input, pivotIndex+1, end);
+		int pivotIndex = findPivot(arr, start, end);
+		quickSort(arr, start, pivotIndex);
+		quickSort(arr, pivotIndex+1, end);
 	}
-	private static int partition(int[] input, int start, int end) {
-//		This is using the first element as pivot
-		int pivot = input[start];
-		int i = start;
+
+	private static int findPivot(int[] arr, int start, int end) {
+		int pivotValue = arr[start];
+		int i =start;
 		int j = end;
-//		because if i>j that means they have crossed
 		while(i<j) {
-//			--j is a prefix operator that means we will decreament index and then use it
-			while(i<j && input[--j]>=pivot) {
+			while(i<j && arr[--j]>=pivotValue) {
 				
 			}
 			if(i<j) {
-				input[i]=input[j];
+				arr[i] = arr[j];
 			}
-			while(i<j && input[++i]<=pivot) {
+			while(i<j && arr[++i]<=pivotValue) {
 				
 			}
-			if(i<j) {
-				input[j] = input[i];
-			}
+			arr[j] = arr[i];
 		}
-		input[j] = pivot;
+		arr[j] = pivotValue;
 		return j;
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
