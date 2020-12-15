@@ -4,7 +4,7 @@ public class SelectionSort {
 		int[] arr = {20, 35, -15, 7, 55, 1, -22};
 		for(int lastUnsortedIndex=arr.length-1;lastUnsortedIndex>0;lastUnsortedIndex--) {
 			int highestIndex = 0;
-//			here below we need <= not only < as bubble sort because in bubble sort we will compare i and i+1, not like here
+//			here below we need <= not only < as bubble sort, because in bubble sort we will compare i and i+1, not like here
 			for(int i=1;i<=lastUnsortedIndex;i++) {
 				if(arr[highestIndex] < arr[i]) {
 					highestIndex = i;

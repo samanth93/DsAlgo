@@ -8,7 +8,7 @@ public class InsertionSort {
 			for(j=i;j>0&&arr[j-1]>newElement;j--) {
 				arr[j]=arr[j-1];
 			}
-			arr[j]=newElement;
+			arr[j] = newElement;
 		}
 		for(int l=0;l<arr.length;l++) {
 			System.out.print("\t"+arr[l]);
