@@ -1,7 +1,8 @@
-package ArrayList;
+package Vector;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 public class Main {
 
@@ -9,7 +10,7 @@ public class Main {
 //		Why using List on LHS and ArrayList on RHS
 //		Because if we decide to go with something else than arraylist in future
 //		we just have to change RHS
-		List<Employee> employeeList = new ArrayList<Employee>();
+		List<Employee> employeeList = new Vector<Employee>();
 		employeeList.add(new Employee("Sam", "Sid", 1));
 		employeeList.add(new Employee("Vis", "Sid", 2));
 		employeeList.add(new Employee("Jay", "Sid", 3));

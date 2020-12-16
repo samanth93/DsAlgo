@@ -1,4 +1,4 @@
-package ArrayList;
+package StackLinkedList;
 
 public class Employee {
 	private String firstName;

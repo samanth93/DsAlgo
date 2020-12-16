@@ -1,4 +1,4 @@
-package ArrayList;
+package DoublyLinkedList;
 
 public class Employee {
 	private String firstName;
