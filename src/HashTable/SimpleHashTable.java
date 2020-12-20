@@ -17,6 +17,17 @@ public class SimpleHashTable {
 //	This is an basic implementation. so we are not looking at collisions
 	public void put(String key, Employee employee) {
 		int hashedKey = hashKey(key);
+		if(occupied(hashedKey)) {
+			int stopIndex = hashedKey;
+			if(hashedKey == hashTable.length - 1) {
+				hashedKey =0;
+			}else {
+				hashedKey++;
+			}
+			while(occupied(hashedKey) && hashedKey != stopIndex) {
+				hashedKey = (hashedKey+1)%hashTable.length;
+			}
+		}
 		if(hashTable[hashedKey] !=null) {
 			System.out.println("Sorry, there is already an employee"+hashedKey);
 		}else {
@@ -27,6 +38,10 @@ public class SimpleHashTable {
 	public Employee get(String key) {
 		int hashedKey = hashKey(key);
 		return hashTable[hashedKey];
+	}
+	
+	private boolean occupied(int index) {
+		return hashTable[index] !=null;
 	}
 	
 	public void printHashTable() {
