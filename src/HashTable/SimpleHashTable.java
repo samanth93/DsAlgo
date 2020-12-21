@@ -1,10 +1,10 @@
 package HashTable;
 
 public class SimpleHashTable {
-	private Employee[] hashTable;
+	private StoredEmployee[] hashTable;
 	
 	public SimpleHashTable(int capacity) {
-		hashTable = new Employee[capacity];
+		hashTable = new StoredEmployee[capacity];
 	}
 	
 //	This is not a wonderful hash function, but just made up for course
@@ -31,7 +31,7 @@ public class SimpleHashTable {
 		if(hashTable[hashedKey] !=null) {
 			System.out.println("Sorry, there is already an employee"+hashedKey);
 		}else {
-			hashTable[hashedKey] = employee;
+			hashTable[hashedKey] = new StoredEmployee(key, employee);
 		}
 	}
 	
