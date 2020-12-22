@@ -13,13 +13,15 @@ public class Main {
 		Employee mikeWilson = new Employee("Mike", "Wilson", 3245);
 		Employee billEnd = new Employee("Bill", "End", 78);
 		
-		SimpleHashTable ht = new SimpleHashTable(10);
+		SimpleHashTable ht = new SimpleHashTable();
 		ht.put("Jones", janeJones);
 		ht.put("Doe", johnDoe);
 		ht.put("Wilson", mikeWilson);
 		ht.put("Smith", marySmith);
-		ht.printHashTable();
-		System.out.println("Retrieve key Wilson:"+ht.get("Wilson"));
+//		ht.put("End", billEnd);
+		ht.printHashtable();
+		System.out.println("Retrieve key Wilson: "+ ht.get("Wilson"));
+		System.out.println("Retrieve key Wilson: "+ ht.get("Smith"));
 	}
 
 }

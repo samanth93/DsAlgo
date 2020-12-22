@@ -1,52 +1,86 @@
 package HashTable;
 
 public class SimpleHashTable {
-	private StoredEmployee[] hashTable;
+	private StoredEmployee[] hashtable;
 	
-	public SimpleHashTable(int capacity) {
-		hashTable = new StoredEmployee[capacity];
+	public SimpleHashTable() {
+		hashtable = new StoredEmployee[10];
 	}
 	
-//	This is not a wonderful hash function, but just made up for course
-//  A hash function is said good if the keys are evenly distributed
-//	So that the retrival will be faster
-	private int hashKey(String key) {
-		return key.length() % hashTable.length;
-	}
-	
-//	This is an basic implementation. so we are not looking at collisions
 	public void put(String key, Employee employee) {
 		int hashedKey = hashKey(key);
 		if(occupied(hashedKey)) {
+//			if it is occupied we need to do linear probing
+//			we loop around till we find empty spot or stop index
 			int stopIndex = hashedKey;
-			if(hashedKey == hashTable.length - 1) {
-				hashedKey =0;
+			if(hashedKey == hashtable.length-1) {
+				hashedKey = 0;
 			}else {
 				hashedKey++;
 			}
-			while(occupied(hashedKey) && hashedKey != stopIndex) {
-				hashedKey = (hashedKey+1)%hashTable.length;
+//			the above if else will help to set the first probe value
+			while(occupied(hashedKey) && hashedKey!=stopIndex) {
+//				we are moding it to prevent IndexOut of Bound when hashedKey = 9
+				hashedKey = (hashedKey+1) % hashtable.length;
 			}
 		}
-		if(hashTable[hashedKey] !=null) {
-			System.out.println("Sorry, there is already an employee"+hashedKey);
+//		After completing the full loop in the if condition above 
+		if(occupied(hashedKey)) {
+			System.out.println("Sorry, there's already an employee at position "+ hashedKey);
 		}else {
-			hashTable[hashedKey] = new StoredEmployee(key, employee);
+			hashtable[hashedKey] = new StoredEmployee(key, employee);
 		}
 	}
 	
 	public Employee get(String key) {
+		int hashedKey = findKey(key);
+		if(hashedKey == -1) {
+			return null;
+		}
+		return hashtable[hashedKey].employee;
+	}
+	
+//	if you are moding by hashtable length then max will be length
+	private int hashKey(String key) {
+		return key.length() % hashtable.length;
+	}
+	
+	private int findKey(String key) {
 		int hashedKey = hashKey(key);
-		return hashTable[hashedKey];
+		if (hashtable[hashedKey] != null && hashtable[hashedKey].key.equals(key)) {
+			return hashedKey;
+		} else {
+//			same code as linear probing should be used
+			int stopIndex = hashedKey;
+			if (hashedKey == hashtable.length - 1) {
+				hashedKey = 0;
+			}else {
+				hashedKey++;
+			}
+			while (hashedKey != stopIndex && 
+					hashtable[hashedKey]!=null && 
+					!hashtable[hashedKey].key.equals(key)) {
+				hashedKey = (hashedKey + 1) % hashtable.length;
+			}
+			if(stopIndex == hashedKey) {
+				return -1;
+			}else {
+				return hashedKey;
+			}
+		}
 	}
 	
 	private boolean occupied(int index) {
-		return hashTable[index] !=null;
+		return hashtable[index] != null;
 	}
 	
-	public void printHashTable() {
-		for(int i=0;i<hashTable.length;i++) {
-			System.out.println(hashTable[i]);
+	public void printHashtable() {
+		for(int i=0;i<hashtable.length;i++) {
+			if(hashtable[i]==null) {
+				System.out.println("empty");
+			}else {
+				System.out.println("Position "+i+": "+hashtable[i].employee);
+			}			
 		}
 	}
 }
