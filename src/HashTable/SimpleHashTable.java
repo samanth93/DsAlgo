@@ -40,6 +40,16 @@ public class SimpleHashTable {
 		return hashtable[hashedKey].employee;
 	}
 	
+	public Employee remove(String key) {
+		int hashedKey = findKey(key);
+		if(hashedKey == -1) {
+			return null;
+		}
+		Employee employee = hashtable[hashedKey].employee;
+		hashtable[hashedKey] = null;
+		return employee;
+	}
+	
 //	if you are moding by hashtable length then max will be length
 	private int hashKey(String key) {
 		return key.length() % hashtable.length;
@@ -50,7 +60,7 @@ public class SimpleHashTable {
 		if (hashtable[hashedKey] != null && hashtable[hashedKey].key.equals(key)) {
 			return hashedKey;
 		} else {
-//			same code as linear probing should be used
+//			same code as linear probing should be usedgit
 			int stopIndex = hashedKey;
 			if (hashedKey == hashtable.length - 1) {
 				hashedKey = 0;
@@ -62,10 +72,10 @@ public class SimpleHashTable {
 					!hashtable[hashedKey].key.equals(key)) {
 				hashedKey = (hashedKey + 1) % hashtable.length;
 			}
-			if(stopIndex == hashedKey) {
-				return -1;
-			}else {
+			if(hashtable[hashedKey] != null && hashtable[hashedKey].key.equals(key)) {
 				return hashedKey;
+			}else {
+				return -1;
 			}
 		}
 	}

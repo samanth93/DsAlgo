@@ -11,8 +11,7 @@ public class Main {
 		Employee johnDoe = new Employee("John", "Doe", 4567);
 		Employee marySmith = new Employee("Mary", "Smith", 22);
 		Employee mikeWilson = new Employee("Mike", "Wilson", 3245);
-		Employee billEnd = new Employee("Bill", "End", 78);
-		
+		Employee billEnd = new Employee("Bill", "End", 78);		
 		SimpleHashTable ht = new SimpleHashTable();
 		ht.put("Jones", janeJones);
 		ht.put("Doe", johnDoe);
@@ -20,8 +19,12 @@ public class Main {
 		ht.put("Smith", marySmith);
 //		ht.put("End", billEnd);
 		ht.printHashtable();
+		System.out.println("++++++++++++++++++++++");
 		System.out.println("Retrieve key Wilson: "+ ht.get("Wilson"));
 		System.out.println("Retrieve key Wilson: "+ ht.get("Smith"));
+		ht.remove("Wilson");
+		ht.remove("Jones");
+		ht.printHashtable();
 	}
 
 }
