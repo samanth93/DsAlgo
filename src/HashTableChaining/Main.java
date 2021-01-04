@@ -24,6 +24,7 @@ public class Main {
 //		while(iterator.hasNext()) {
 //			System.out.println(iterator.next());
 //		}
+		
 		hashMap.putIfAbsent("Doe", mikeWilson);
 		hashMap.forEach((k, v)->System.out.println("Key = "+k+", Employee = "+v));
 	}
