@@ -8,6 +8,10 @@ public class Main {
 		System.out.println(iterativeBinarySearch(intArray, 35));
 		System.out.println(iterativeBinarySearch(intArray, 8888));
 		System.out.println(iterativeBinarySearch(intArray, 1));
+		System.out.println(recursiveVersionBinarySearch(intArray, -15));
+		System.out.println(recursiveVersionBinarySearch(intArray, 35));
+		System.out.println(recursiveVersionBinarySearch(intArray, 8888));
+		System.out.println(recursiveVersionBinarySearch(intArray, 1));
 	}
 	public static int iterativeBinarySearch(int[] input, int value) {
 		int start = 0;
@@ -39,8 +43,10 @@ public class Main {
 		if(input[midpoint]==value) {
 			return midpoint;
 		}else if(input[midpoint]<value) {
+//			see from mid to right
 			return recursiveVersionBinarySearch(input, midpoint+1, end, value);
 		}else {
+//			see from left to mid
 			return recursiveVersionBinarySearch(input, start, midpoint, value);
 		}
 	}
