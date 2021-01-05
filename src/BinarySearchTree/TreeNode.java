@@ -26,6 +26,16 @@ public class TreeNode {
 		}
 	}
 	
+	public void traverseInOrder() {
+		if(leftChild !=null) {
+			leftChild.traverseInOrder();
+		}
+		System.out.print("Data = "+data+",");
+		if(rightChild !=null) {
+			rightChild.traverseInOrder();
+		}
+	}
+	
 	public TreeNode(int data) {
 		this.data = data;
 	}
